@@ -186,7 +186,18 @@ std::vector<Move *> Board::getPossibleMoves(Side side)    {
   for (int i = 0; i < 8; i++)	{
     for (int j = 0; j < 8; j++)  {
       std::cerr << "allocating this move:  (" << i << ", " << j << ")\n";
-      mymove = new Move(i, j);
+      try
+      {
+	mymove = new Move(i, j);
+	// guaranteed to be a good alloc if we reach here
+	//  if it was a bad alloc, we go to our catch
+      }
+      catch(std::bad_alloc& exc)
+      {
+	std::cerr << "We had a bad alloc!";
+	return moves;
+      }
+      
       std::cerr << "allocated move\n";
       if (checkMove(mymove, side))   {
 	std::cerr << "pushing this move:  (" << i << ", " << j << ")\n";
