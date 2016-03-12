@@ -1,6 +1,6 @@
 CC          = g++
 CFLAGS      = -Wall -ansi -pedantic -ggdb
-OBJS        = player.o board.o
+OBJS        = player.o board.o TreeNode.o
 PLAYERNAME  = AMULYA
 
 all: $(PLAYERNAME) testgame

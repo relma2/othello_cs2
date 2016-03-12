@@ -1,4 +1,5 @@
 #include "board.h"
+#include <iostream>
 
 /*
  * Make a standard 8x8 othello board and initialize it to the standard setup.
@@ -179,17 +180,23 @@ void Board::setBoard(char data[]) {
     }
 }
 
-std::vector<Move *> getPossibleMoves(Side side)    {
+std::vector<Move *> Board::getPossibleMoves(Side side)    {
   std::vector<Move *> moves;
   Move * mymove;
   for (int i = 0; i < 8; i++)	{
     for (int j = 0; j < 8; j++)  {
+      std::cerr << "allocating this move:  (" << i << ", " << j << ")\n";
       mymove = new Move(i, j);
+      std::cerr << "allocated move\n";
       if (checkMove(mymove, side))   {
+	std::cerr << "pushing this move:  (" << i << ", " << j << ")\n";
 	moves.push_back(mymove);
+	std::cerr << "pushed move\n";
       }
       else   {
+	std::cerr << "deleting this move:  (" << i << ", " << j << ")\n";
 	delete mymove;
+	std::cerr << "deleted move\n";
       }
     }
   }
