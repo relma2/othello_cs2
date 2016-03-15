@@ -16,11 +16,14 @@ public:
     Move *doMove(Move *opponentsMove, int msLeft);
     Move *greedy(Move *opponentsMove);
     int minimax(Board * board, int depth, int depthAt, int color);
+    int negamax(Board * board, int depth, int depthAt, int color, int alpha, int beta);
+    int getHeuristic(Board * board, int color);
     Board * myBoard;
     // TreeNode * myTree;
     Side mySide;
     Side other;
     Move * bestmove;
+    int movenum;
 
     // Flag to tell if the player is running within the test_minimax context
     bool testingMinimax;
