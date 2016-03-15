@@ -13,4 +13,4 @@ This will be my submission for the tournament. This thing will first:
      or fewer moves left, where it switches to greedy heuristic
    
 Now, it looks at the score of 20 (this is just a guess) we have if we have an edge move,
-and
+and takes the edge if it is more valuable than our other one.
